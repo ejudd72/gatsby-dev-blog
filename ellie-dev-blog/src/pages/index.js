@@ -10,7 +10,7 @@ import Seo from "../components/seo"
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "banner.png" }) {
+      file(relativePath: { eq: "watercolour-banner.png" }) {
         childImageSharp {
           fluid {
             ...GatsbyImageSharpFluid
@@ -26,10 +26,12 @@ const IndexPage = () => {
       <BackgroundImage
         tag="header"
         fluid={data.file.childImageSharp.fluid}
-        style={{ height: "100rem" }}
-      >
-        <h1>HELLO</h1>
-      </BackgroundImage>
+        style={{
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center bottom",
+          height: "30vh",
+        }}
+      ></BackgroundImage>
     </Layout>
   )
 }
