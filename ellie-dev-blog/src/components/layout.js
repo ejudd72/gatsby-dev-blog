@@ -16,7 +16,8 @@ import { theme } from "../utils/theme"
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 8rem);
+  // min-height: calc(100vh - 8rem);
+  min-height: 100vh;
 `
 
 const ChildContainer = styled.div`
@@ -37,7 +38,6 @@ const Layout = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
       <PageContainer>
         <ChildContainer>{children}</ChildContainer>
         <footer>

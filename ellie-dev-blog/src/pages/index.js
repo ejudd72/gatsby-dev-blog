@@ -29,7 +29,7 @@ const IndexPage = () => {
         style={{
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center bottom",
-          height: "30vh",
+          height: "50vh",
         }}
       ></BackgroundImage>
     </Layout>
