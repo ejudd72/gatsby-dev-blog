@@ -1,11 +1,8 @@
-import * as React from "react"
-import { StaticImage } from "gatsby-plugin-image"
-import { graphql, useStaticQuery } from "gatsby"
-import styled from "styled-components"
-
+import React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import SEO from "../components/seo"
+import styled from "styled-components"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -17,23 +14,44 @@ const IndexPage = () => {
           }
         }
       }
+      allMdx {
+        nodes {
+          frontmatter {
+            title
+            author
+            slug
+          }
+        }
+      }
     }
   `)
 
   return (
-    <Layout>
-      <Seo title="Home" />
+    <div>
+      <SEO title="Home" />
       <BackgroundImage
-        tag="header"
+        Tag="header"
         fluid={data.file.childImageSharp.fluid}
-        style={{
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center bottom",
-          height: "50vh",
-        }}
-      ></BackgroundImage>
-    </Layout>
+        style={{ height: "50vh" }}
+      />
+      <BlogPreview>
+        <h2>Blog Posts</h2>
+        {data.allMdx.nodes.map(post => (
+          <h3>
+            <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+          </h3>
+        ))}
+      </BlogPreview>
+    </div>
   )
 }
 
 export default IndexPage
+
+const BlogPreview = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+`

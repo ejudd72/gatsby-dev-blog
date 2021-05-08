@@ -16,8 +16,7 @@ import { theme } from "../utils/theme"
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  // min-height: calc(100vh - 8rem);
-  min-height: 100vh;
+  min-height: calc(100vh - 8rem);
 `
 
 const ChildContainer = styled.div`
