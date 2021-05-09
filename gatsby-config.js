@@ -6,6 +6,13 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-transition-link`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout.js`),
+      },
+    },
     {
       resolve: "gatsby-plugin-mdx",
       options: {
@@ -35,6 +42,21 @@ module.exports = {
         name: `posts`,
         path: `${__dirname}/src/posts`,
       },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      plugins: [
+        {
+          resolve: "gatsby-remark-custom-blocks",
+          options: {
+            blocks: {
+              snippet: {
+                classes: "snippet",
+              },
+            },
+          },
+        },
+      ],
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,

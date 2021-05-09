@@ -16,12 +16,18 @@ import { theme } from "../utils/theme"
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 8rem);
+  min-height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  .footer {
+    text-align: center;
+    padding: 10px;
+  }
 `
 
 const ChildContainer = styled.div`
   flex-grow: 1;
-  // margin-top: 10rem;
 `
 
 const Layout = ({ children }) => {
@@ -38,8 +44,9 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <PageContainer>
+        <Header siteTitle="ellieelliedev" />
         <ChildContainer>{children}</ChildContainer>
-        <footer>
+        <footer className="footer">
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.com">Gatsby</a>
